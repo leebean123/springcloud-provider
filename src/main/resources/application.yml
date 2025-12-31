@@ -1,0 +1,28 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /student-provider
+  tomcat:
+    use-relative-redirects: false
+
+spring:
+  application:
+    name: student-provider
+  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 127.0.0.1:8848
+    zookeeper:
+      connect-string: localhost:2181  # ZooKeeper 地址
+      enabled: true
+      discovery:
+        prefer-ip-address: true
+        enabled: true
+        root: /services  # 可选：自定义根路径（默认是 /services）
+        instance-id: ${spring.application.name}:${server.port} # 唯一实例ID
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
