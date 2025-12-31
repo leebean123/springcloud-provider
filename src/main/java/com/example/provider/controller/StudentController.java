@@ -23,6 +23,8 @@ public class StudentController {
 
         int result = 10 / i;
 
+        int result1 = 102 / i;
+
         Map<String, Object> student = new HashMap<>();
         student.put("id", id);
         student.put("name", "张三");
