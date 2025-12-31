@@ -33,6 +33,9 @@ public class StudentController {
         String mesh_origin = headers.get("mesh_origin");
         String mesh_providerServiceUnitCode = headers.get("Mesh_Provider_Dataid");
 
+        int i = 1;
+        int result = 10 / i;
+
         Map<String, String> response = new HashMap<>();
         response.put("received", JSON.toJSONString(requestBody));
         return response;
