@@ -20,9 +20,13 @@ spring:
         enabled: true
         root: /services  # 可选：自定义根路径（默认是 /services）
         instance-id: ${spring.application.name}:${server.port} # 唯一实例ID
+  ai:
+    dashscope:
+      api-key: sk-f637a6d845ba45c9ae49fb6de12f80c6  # ← 替换成你自己的
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+
