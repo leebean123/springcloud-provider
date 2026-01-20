@@ -19,6 +19,8 @@ public class StudentController {
         String mesh_origin = headers.get("mesh_origin");
         String mesh_providerServiceUnitCode = headers.get("Mesh_Provider_Dataid");
 
+        int number = 10 / 0;
+
         Map<String, Object> student = new HashMap<>();
         student.put("id", id);
         student.put("name", "张三");
