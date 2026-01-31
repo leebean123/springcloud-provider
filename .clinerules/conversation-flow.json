@@ -1,0 +1,31 @@
+{
+  "nodes": [
+    {
+      "type": "user-input",
+      "id": "input-1"
+    },
+    {
+      "type": "rule",
+      "id": "rule-1",
+      "condition": "input.text contains '检查阿里规范'",
+      "success": "skill-call-1",
+      "failure": "reply-1"
+    },
+    {
+      "type": "skill-call",
+      "id": "skill-call-1",
+      "skill": "alibaba-java-checker",
+      "input": "{\"code\": \"{{input.text}}\"}"
+    },
+    {
+      "type": "reply",
+      "id": "reply-1",
+      "template": "{{#if result.issues}}⚠️ 发现 {{result.issues.length}} 个阿里规范问题：{{#each result.issues}}• [{{severity}}] {{rule}}: {{message}}{{/each}}{{else}}✅ 代码符合阿里规范！{{/if}}"
+    }
+  ],
+  "connections": [
+    ["input-1", "rule-1"],
+    ["rule-1", "skill-call-1"],
+    ["skill-call-1", "reply-1"]
+  ]
+}

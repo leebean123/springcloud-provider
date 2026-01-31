@@ -1,0 +1,17 @@
+{
+  "skills": {
+    "alibaba-java-checker": {
+      "command": "python3",
+      "args": ["{{skillPath}}/tencent-java-checker.py"],
+      "description": "阿里巴巴 Java 开发规范检查器",
+      "input": {
+        "code": "{{selectedCode}}"
+      },
+      "output": {
+        "passed": "passed",
+        "issues": "issues",
+        "summary": "summary"
+      }
+    }
+  }
+}
