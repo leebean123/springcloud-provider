@@ -8,6 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @EnableDiscoveryClient
 public class ProviderApplication {
 	public static void main(String[] args) {
+		System.out.println("ProviderApplication main");
 		SpringApplication.run(ProviderApplication.class, args);
 	}
 }
