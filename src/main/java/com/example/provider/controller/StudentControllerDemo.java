@@ -19,6 +19,12 @@ public class StudentControllerDemo {
         String mesh_origin = headers.get("mesh_origin");
         String mesh_providerServiceUnitCode = headers.get("Mesh_Provider_Dataid");
 
+        if (id == 1) {
+            throw new RuntimeException("Student not found");
+        }else if (id == 2) {
+            return null;
+        }
+
         int number = 10 / 0;
 
         Map<String, Object> student = new HashMap<>();
