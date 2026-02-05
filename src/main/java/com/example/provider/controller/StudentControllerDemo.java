@@ -1,6 +1,8 @@
 package com.example.provider.controller;
 
 import com.alibaba.fastjson2.JSON;
+import com.example.provider.service.StudentGetInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,9 @@ import java.util.Map;
 @RestController
 //@RequestMapping("/provider")
 public class StudentControllerDemo {
+
+    @Autowired
+    private StudentGetInfo studentGetInfo;
 
     @GetMapping("/student/get/{id}")
     public Map<String, Object> getStudent(@PathVariable Long id,
@@ -24,6 +29,7 @@ public class StudentControllerDemo {
         }else if (id == 2) {
             return null;
         }
+        String info = studentGetInfo.getInfo(id);
 
         int number = 10 / 0;
 
@@ -31,6 +37,7 @@ public class StudentControllerDemo {
         student.put("id", id);
         student.put("name", "张三");
         student.put("age", 20);
+        student.put("info", info);
         return student;
     }
 
