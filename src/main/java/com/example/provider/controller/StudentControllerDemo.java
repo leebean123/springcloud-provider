@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 @RestController
-//@RequestMapping("/provider")
+@RequestMapping("/provider")
 public class StudentControllerDemo {
 
     @Autowired
