@@ -1,0 +1,49 @@
+src/main/java/com/example/provider/utill/TimeUtil.java
+  f964a327d8d61245 1-119
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "31c39ba940aaf9183bb39cf33575317ab2cd92c3",
+  "prompts": {
+    "36045299eafeef4c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_25233e9f2ffe8L60BKU3LngOfc-ed22f321-3977-4395-ab4f-cb8104fb983a",
+        "model": "unknown"
+      },
+      "human_author": "leebean123",
+      "messages": [],
+      "total_additions": 319,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "7690ce9618536e62": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_25233e9f2ffe8L60BKU3LngOfc",
+        "model": "litellm-local/deepseek-chat"
+      },
+      "human_author": "leebean123",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "f964a327d8d61245": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_25233e9f2ffe8L60BKU3LngOfc-e86c76f9-3f29-4f1e-a981-47bdea853b32",
+        "model": "unknown"
+      },
+      "human_author": "leebean123",
+      "messages": [],
+      "total_additions": 118,
+      "total_deletions": 0,
+      "accepted_lines": 118,
+      "overriden_lines": 0
+    }
+  }
+}
