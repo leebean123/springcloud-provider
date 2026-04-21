@@ -1,0 +1,36 @@
+src/main/java/com/example/provider/utill/IpUtil.java
+  e69f45bcb3f17d6e 1-202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "55dec8fc389bc3ff32251959888de94fd676d664",
+  "prompts": {
+    "06cf9408d9cc1939": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_25233e9f2ffe8L60BKU3LngOfc-bafbc71a-a545-4ca1-899f-1718b00fd71f",
+        "model": "unknown"
+      },
+      "human_author": "leebean123",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 0,
+      "overriden_lines": 0
+    },
+    "e69f45bcb3f17d6e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_25233e9f2ffe8L60BKU3LngOfc-0bdfb220-90b7-4d82-9cb1-907d81f968e5",
+        "model": "unknown"
+      },
+      "human_author": "leebean123",
+      "messages": [],
+      "total_additions": 201,
+      "total_deletions": 0,
+      "accepted_lines": 201,
+      "overriden_lines": 0
+    }
+  }
+}
