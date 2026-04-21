@@ -41,6 +41,8 @@ public class IpUtil {
             }
         }
 
+
+
         // 2. 检查 Proxy-Client-IP
         ip = request.getHeader(HEADER_PROXY_CLIENT_IP);
         if (ip != null && !ip.isEmpty() && !UNKNOWN.equalsIgnoreCase(ip)) {
@@ -80,7 +82,6 @@ public class IpUtil {
     }
 
     /**
-     * 检查是否为内网 IP
      *
      * @param ip IP 地址
      * @return 是否为内网 IP
