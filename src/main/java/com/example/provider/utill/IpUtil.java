@@ -103,7 +103,6 @@ public class IpUtil {
         final byte b0 = addr[0];
         final byte b1 = addr[1];
 
-        // 10.0.0.0 - 10.255.255.255
         final byte section1 = 0x0A;
         // 172.16.0.0 - 172.31.255.255
         final byte section2 = (byte) 0xAC;
