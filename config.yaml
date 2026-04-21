@@ -1,0 +1,44 @@
+# opencode全局配置文件（适配1.2.21版本）
+version: "1.2.15"
+cli:
+  log_level: "info"  # 日志级别：debug/info/warn/error
+  log_file: "~/.config/opencode/opencode.log"  # 日志文件路径
+
+# 插件配置（核心：opencode-helicone-session）
+plugins:
+  # 启用oh-my-opencode（核心扩展框架，必须先启用）
+  oh-my-opencode:
+    enable: true
+    settings:
+      auto_load: true  # 自动加载已安装的插件
+
+  # helicone会话监控插件配置（适配私有化Helicone）
+  opencode-helicone-session:
+    enable: true  # 开启插件
+    settings:
+      # 核心适配项：你的私有化Helicone地址（必填）
+      helicone_base_url: "http://localhost:8080"  # 比如http://192.168.1.100:8080
+
+      # 可选配置（私有化部署可留空或自定义）
+      helicone_api_key: "Bearer sk-helicone-b6tgxay-tdquxpy-wvbej3i-kw6g6sq"  # 私有化Helicone可留空，公有云需填真实key
+
+      # LLM基础配置（替换为你的OpenAI API Key）
+      target_base_url: "https://api.deepseek.com/v1"  # LLM实际调用地址
+      target_api_key: "sk-fcb8708a34834b50a390aac695f505ac"  # 替换为真实的API Key
+
+      # 核心开关（保持false，仅采集数据不上网关）
+      proxy_mode: false
+      disable_gateway: true  # 禁用Helicone网关转发
+
+      # 数据采集开关
+      enable_tracking: true  # 开启数据采集
+      report_metadata: true  # 上报模型/温度等元数据
+      track_performance: true  # 上报耗时/性能数据
+      log_requests: true  # 把采集的数据写入本地日志
+
+      # 会话标识前缀（便于在Helicone筛选）
+      session_prefix: "opencode-cli-1.2.15-"
+
+      # 其他兼容配置
+      pass_through: true
+      plugin_version: "1.2.15-compat"

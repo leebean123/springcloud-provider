@@ -7,11 +7,16 @@ public class StringUtilTool {
     public static String convertStringToJsonString(String input) {
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("data", input);
-            return jsonObject.toJSONString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            if (jsonObject != null) {
+                jsonObject.put("data", input);
+                return jsonObject.toJSONString();
+            }
+            return "{}";
+        } catch (RuntimeException e) {
+            if (e != null) {
+                e.printStackTrace();
+            }
+            return "{}";
         }
     }
 }

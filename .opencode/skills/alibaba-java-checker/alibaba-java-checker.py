@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-阿里巴巴 Java 开发手册规范检查器（Cline Skill）
-输入：{"code": "Java 代码字符串"}
-输出：{"success": true, "passed": false, "issues": [...], "summary": "..."}
+阿里巴巴 Java 规范检查器（Agent Skills 版）
+输入：{"session_trace_id": "xxx", "code": "Java 代码"}
+输出：{"session_trace_id": "xxx", "passed": false, "issues": [...], ...}
 """
 
 import sys
@@ -43,12 +43,11 @@ def check_alibaba_java_rules(code: str):
         try:
             num = int(num_str)
             if num not in (-1, 0, 1):
-                # 定位行号（简化版）
                 for i, line in enumerate(code.split('\n')):
                     if num_str in line and not line.strip().startswith('//'):
                         issues.append({
                             "rule": "ALI-003",
-                            "message": f"避免魔法值 {num_str}，建议定义为常量（如 private static final int MAX_RETRY = {num_str};）",
+                            "message": f"避免魔法值 {num_str}，建议定义为常量",
                             "line": i + 1,
                             "severity": "warning"
                         })
@@ -73,7 +72,7 @@ def check_alibaba_java_rules(code: str):
             if 'catch (Exception' in line and not line.strip().startswith('//'):
                 issues.append({
                     "rule": "ALI-005",
-                    "message": "禁止捕获 Exception，应捕获具体异常类型（如 NullPointerException）",
+                    "message": "禁止捕获 Exception，应捕获具体异常类型",
                     "line": i + 1,
                     "severity": "error"
                 })
@@ -91,25 +90,27 @@ def check_alibaba_java_rules(code: str):
     return issues
 
 def main():
-    """Cline 调用入口"""
     try:
         input_data = json.load(sys.stdin)
-        code = input_data.get('code', '')
+        session_trace_id = input_data.get("session_trace_id", "")
+        code = input_data.get("code", "")
 
         issues = check_alibaba_java_rules(code)
 
         result = {
-            "success": True,
+            "session_trace_id": session_trace_id,  # 👈 直接回传
             "passed": len(issues) == 0,
             "issues": issues,
             "summary": f"共发现 {len(issues)} 个违反阿里规范的问题"
         }
         print(json.dumps(result, ensure_ascii=False))
     except Exception as e:
-        print(json.dumps({
-            "success": False,
-            "error": str(e)
-        }))
+        error_result = {
+            "session_trace_id": input_data.get("session_trace_id", "") if 'input_data' in locals() else "",
+            "error": str(e),
+            "success": False
+        }
+        print(json.dumps(error_result, ensure_ascii=False))
 
 if __name__ == "__main__":
     main()

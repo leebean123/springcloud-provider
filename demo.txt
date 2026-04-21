@@ -1,0 +1,656 @@
+opencode run --agent review-agent "你是一个代码审查 Agent。
+> 你不会假设源码完整。你必须优先信任 tree-sitter 提供的结构信息我分析下变更影响，例如我加了if分支，你提醒我改了那个接口，需要重点关注测试，把restful接口给我列出，如果service有变更，需要将上游接口也列出来 " --file structure.json
+!  agent "review-agent" not found. Falling back to default agent
+|  Glob     {"pattern":"**/*.java","path":"/usr/local/code/dubbo/springcloud-provider"}
+|  Bash     检查git状态查看变更
+
+On branch graphite_demo
+Your branch is up to date with 'origin/graphite_demo'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   .opencode/config.json
+	new file:   .opencode/skills/alibaba-java-checker/SKILL.md
+	new file:   .opencode/skills/alibaba-java-checker/alibaba-java-checker.py
+	new file:   pro.py
+	new file:   queries/methods.scm
+	new file:   scripts/gen-symbols.sh
+	new file:   scripts/run-tree-sitter.sh
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .idea/vcs.xml
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.claude/
+	.idea/copilot.data.migration.agent.xml
+	.idea/copilot.data.migration.ask2agent.xml
+	.idea/copilot.data.migration.edit.xml
+	.opencode/agent/
+	AGENTS.md
+	README.docx
+	README.pdf
+	__pycache__/
+	ast.txt
+	generate.js
+	node_modules/
+	package-lock.json
+	package.json
+	pr.diff
+	structure.json
+	symbols.json
+	tree-sitter-java/
+
+
+|  Bash     查看已暂存的变更
+
+diff --git a/.opencode/config.json b/.opencode/config.json
+new file mode 100644
+index 0000000..dc5811a
+--- /dev/null
++++ b/.opencode/config.json
+@@ -0,0 +1,17 @@
++{
++  "skills": {
++    "alibaba-java-checker": {
++      "command": "python3",
++      "args": ["{{skillPath}}/tencent-java-checker.py"],
++      "description": "阿里巴巴 Java 开发规范检查器",
++      "input": {
++        "code": "{{selectedCode}}"
++      },
++      "output": {
++        "passed": "passed",
++        "issues": "issues",
++        "summary": "summary"
++      }
++    }
++  }
++}
+\ No newline at end of file
+diff --git a/.opencode/skills/alibaba-java-checker/SKILL.md b/.opencode/skills/alibaba-java-checker/SKILL.md
+new file mode 100644
+index 0000000..cdfcc3b
+--- /dev/null
++++ b/.opencode/skills/alibaba-java-checker/SKILL.md
+@@ -0,0 +1,21 @@
++---
++name: alibaba-java-checker
++description: 《阿里巴巴 Java 开发手册》规范检查器
++version: 1.0.0
++author: Cline Team
++input:
++  code:
++    type: string
++    description: "需要检查的 Java 代码（字符串）"
++output:
++  passed:
++    type: boolean
++    description: "是否通过规范检查（true=通过，false=未通过）"
++  issues:
++    type: array
++    description: "违反规范的问题列表（每个问题包含 rule, message, line, severity）"
++  summary:
++    type: string
++    description: "检查结果摘要"
++---
++基于《阿里巴巴 Java 开发手册》的静态代码检查，自动识别命名、日志、魔法值等常见问题。
+\ No newline at end of file
+diff --git a/.opencode/skills/alibaba-java-checker/alibaba-java-checker.py b/.opencode/skills/alibaba-java-checker/alibaba-java-checker.py
+new file mode 100644
+index 0000000..e1c32cb
+--- /dev/null
++++ b/.opencode/skills/alibaba-java-checker/alibaba-java-checker.py
+@@ -0,0 +1,115 @@
++#!/usr/bin/env python3
++# -*- coding: utf-8 -*-
++"""
++阿里巴巴 Java 开发手册规范检查器（Cline Skill）
++输入：{"code": "Java 代码字符串"}
++输出：{"success": true, "passed": false, "issues": [...], "summary": "..."}
++"""
++
++import sys
++import json
++import re
++
++def check_alibaba_java_rules(code: str):
++    """检查代码是否符合阿里巴巴 Java 开发手册规范"""
++    issues = []
++
++    # 规则1: 禁止 System.out.println
++    if 'System.out.println' in code:
++        lines = code.split('\n')
++        for i, line in enumerate(lines):
++            if 'System.out.println' in line and not line.strip().startswith('//'):
++                issues.append({
++                    "rule": "ALI-001",
++                    "message": "禁止使用 System.out.println，请使用 SLF4J 日志框架（如 log.info(...)）",
++                    "line": i + 1,
++                    "severity": "error"
++                })
++
++    # 规则2: 类名必须 UpperCamelCase
++    class_match = re.search(r'class\s+(\w+)', code)
++    if class_match:
++        class_name = class_match.group(1)
++        if not re.match(r'^[A-Z][a-zA-Z0-9]*$', class_name):
++            issues.append({
++                "rule": "ALI-002",
++                "message": f"类名 '{class_name}' 必须使用 UpperCamelCase（如 UserService）",
++                "severity": "warning"
++            })
++
++    # 规则3: 魔法值检查（除 -1,0,1）
++    magic_numbers = re.findall(r'(?<!\w)([+-]?\d+)(?!\w)', code)
++    for num_str in set(magic_numbers):
++        try:
++            num = int(num_str)
++            if num not in (-1, 0, 1):
++                # 定位行号（简化版）
++                for i, line in enumerate(code.split('\n')):
++                    if num_str in line and not line.strip().startswith('//'):
++                        issues.append({
++                            "rule": "ALI-003",
++                            "message": f"避免魔法值 {num_str}，建议定义为常量（如 private static final int MAX_RETRY = {num_str};）",
++                            "line": i + 1,
++                            "severity": "warning"
++                        })
++                        break
++        except ValueError:
++            continue
++
++    # 规则4: 禁止返回 null（集合方法）
++    if 'return null' in code:
++        for i, line in enumerate(code.split('\n')):
++            if 'return null' in line and not line.strip().startswith('//'):
++                issues.append({
++                    "rule": "ALI-004",
++                    "message": "禁止返回 null，集合方法应返回 Collections.emptyList()",
++                    "line": i + 1,
++                    "severity": "error"
++                })
++
++    # 规则5: 禁止捕获 Exception
++    if 'catch (Exception' in code:
++        for i, line in enumerate(code.split('\n')):
++            if 'catch (Exception' in line and not line.strip().startswith('//'):
++                issues.append({
++                    "rule": "ALI-005",
++                    "message": "禁止捕获 Exception，应捕获具体异常类型（如 NullPointerException）",
++                    "line": i + 1,
++                    "severity": "error"
++                })
++
++    # 规则6: 空指针检查（未判空）
++    null_risk = re.findall(r'(\w+)\.(\w+)\(', code)
++    for var, method in null_risk:
++        if var not in ['this', 'super'] and not re.search(f'if\\s+{var}\\s+!=\\s+null', code):
++            issues.append({
++                "rule": "ALI-006",
++                "message": f"变量 '{var}' 可能为空，调用 '{method}()' 前建议判空",
++                "severity": "warning"
++            })
++
++    return issues
++
++def main():
++    """Cline 调用入口"""
++    try:
++        input_data = json.load(sys.stdin)
++        code = input_data.get('code', '')
++
++        issues = check_alibaba_java_rules(code)
++
++        result = {
++            "success": True,
++            "passed": len(issues) == 0,
++            "issues": issues,
++            "summary": f"共发现 {len(issues)} 个违反阿里规范的问题"
++        }
++        print(json.dumps(result, ensure_ascii=False))
++    except Exception as e:
++        print(json.dumps({
++            "success": False,
++            "error": str(e)
++        }))
++
++if __name__ == "__main__":
++    main()
+\ No newline at end of file
+diff --git a/pro.py b/pro.py
+new file mode 100644
+index 0000000..62f622a
+--- /dev/null
++++ b/pro.py
+@@ -0,0 +1,40 @@
++你是一个专业的代码分析 AI Agent，擅长 Tree-sitter、Git、静态程序分析。
++
++请帮我自动实现一个工具，功能如下：
++
++1. 输入：两个 commit（old_commit, new_commit），一个 Git 仓库路径。
++2. 工具自动做：
++   a. 执行 git diff，获取所有变更的 Java 文件、变更行号范围。
++   b. 用 Tree-sitter 分别解析旧版本和新版本的 Java 文件，得到两棵语法树。
++   c. 把 Git Diff 的行号范围，映射到新版本 Tree-sitter 的语法节点（if_statement、method_declaration、annotation 等）。
++   d. 对比新旧语法树，识别：
++      - 新增的 if 分支
++      - 修改的 if 条件
++      - 新增/修改的方法
++   e. 对新增/修改的 if：
++      - 提取条件表达式
++      - 找到它所在的方法
++      - 回溯调用链，找到上层 Spring Controller/API（@RestController、@GetMapping 等）
++   f. 输出：
++      - 变更总结
++      - 影响的接口
++      - 必须测试的点
++      - 如何构造测试条件（参数、依赖返回值）
++      - 风险提示
++
++要求：
++- 使用 Python + tree-sitter + tree-sitter-java。
++- 代码可直接运行，结构清晰，带注释。
++- 输出 Markdown 格式报告，可直接用于 PR 评论。
++- 自动处理行号从 0/1 开始的差异。
++- 自动关联 Diff 行号与 Tree-sitter 节点。
++
++请直接给出完整可运行的代码，包括：
++- 依赖安装
++- Tree-sitter 语法编译
++- Git Diff 解析
++- 新旧语法树解析与对比
++- 行号映射逻辑
++- 调用链回溯（简化版）
++- 报告生成
++- 示例运行入口
+\ No newline at end of file
+diff --git a/queries/methods.scm b/queries/methods.scm
+new file mode 100755
+index 0000000..9a75eba
+--- /dev/null
++++ b/queries/methods.scm
+@@ -0,0 +1,7 @@
++(
++  (method_declaration
++    name: (identifier) @method_name
++    parameters: (formal_parameters) @params
++    body: (block)? @body
++  )
++)
+diff --git a/scripts/gen-symbols.sh b/scripts/gen-symbols.sh
+new file mode 100755
+index 0000000..ccb8f6e
+--- /dev/null
++++ b/scripts/gen-symbols.sh
+@@ -0,0 +1,14 @@
++#!/usr/bin/env bash
++set -e
++
++FILE=$1
++
++tree-sitter query queries/methods.scm "$FILE" \
++| jq -R -s '
++  split("\n")
++  | map(select(length > 0))
++  | map({
++      kind: "method",
++      raw: .
++    })
++'
+diff --git a/scripts/run-tree-sitter.sh b/scripts/run-tree-sitter.sh
+new file mode 100755
+index 0000000..62e7cf2
+--- /dev/null
++++ b/scripts/run-tree-sitter.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++set -e
++
++DIFF_FILE=$1
++TMP_DIR=$(mktemp -d)
++
++# 1. 从 diff 中提取被修改的 Java 文件路径
++FILES=$(grep '^+++ b/' "$DIFF_FILE" | sed 's|+++ b/||' | grep '\.java$')
++
++echo "["
++
++FIRST=true
++
++for FILE in $FILES; do
++  if [ ! -f "$FILE" ]; then
++    continue
++  fi
++
++  if [ "$FIRST" = false ]; then
++    echo ","
++  fi
++  FIRST=false
++
++  echo "{"
++  echo "\"file\": \"$FILE\","
++  echo "\"methods\":"
++
++  tree-sitter query queries/methods.scm "$FILE" \
++    | jq -R -s 'split("\n") | map(select(length>0))'
++
++  echo "}"
++done
++
++echo "]"
++
++rm -rf "$TMP_DIR"
+
+|  Bash     查看未暂存的变更
+
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+index 35eb1dd..24cde2d 100644
+--- a/.idea/vcs.xml
++++ b/.idea/vcs.xml
+@@ -2,5 +2,6 @@
+ <project version="4">
+   <component name="VcsDirectoryMappings">
+     <mapping directory="" vcs="Git" />
++    <mapping directory="$PROJECT_DIR$/tree-sitter-java" vcs="Git" />
+   </component>
+ </project>
+\ No newline at end of file
+
+|  Read     src/main/java/com/example/provider/controller/StudentController.java
+|  Read     src/main/java/com/example/provider/controller/StudentControllerDemo.java
+|  Read     src/main/java/com/example/provider/service/StudentGetInfo.java
+|  Read     src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java
+|  Read     src/test/java/com/example/mambabli/Provider/ProviderApplicationTests.java
+|  Glob     {"pattern":"**/*Test*.java","path":"/usr/local/code/dubbo/springcloud-provider"}
+|  Bash     查看最近的git提交历史
+
+7f91cbb add service interface
+28c17de add service interface
+dc5ea70 add if statement
+5c381d0 zero subplus
+a5d1a94 feat(js): Add new API method for fetching users (#9)
+0b1a933 feat(js): Add new API method for fetching users
+86a2b82 Merge pull request #8 from leebean123/01-20-feat_api_add_new_api_method_for_fetching_users
+e8b615d feat(api): Add new API method for fetching users
+b070483 feat(frontend): Load and show a list of users (#5)
+e7c7e29 feat(frontend): Load and show a list of users
+
+|  Bash     查看添加if语句的提交文件
+
+commit dc5ea70dfc4e8647a919658b7d0e1404bd393365
+Author: leebean123 <lib@aixahc.com>
+Date:   Thu Feb 5 09:57:22 2026 +0800
+
+    add if statement
+
+src/main/java/com/example/provider/controller/StudentControllerDemo.java
+
+|  Bash     查看添加if语句提交的具体差异
+
+commit dc5ea70dfc4e8647a919658b7d0e1404bd393365
+Author: leebean123 <lib@aixahc.com>
+Date:   Thu Feb 5 09:57:22 2026 +0800
+
+    add if statement
+
+diff --git a/src/main/java/com/example/provider/controller/StudentControllerDemo.java b/src/main/java/com/example/provider/controller/StudentControllerDemo.java
+index ed1a9b7..0dd6989 100644
+--- a/src/main/java/com/example/provider/controller/StudentControllerDemo.java
++++ b/src/main/java/com/example/provider/controller/StudentControllerDemo.java
+@@ -19,6 +19,12 @@ public class StudentControllerDemo {
+         String mesh_origin = headers.get("mesh_origin");
+         String mesh_providerServiceUnitCode = headers.get("Mesh_Provider_Dataid");
+
++        if (id == 1) {
++            throw new RuntimeException("Student not found");
++        }else if (id == 2) {
++            return null;
++        }
++
+         int number = 10 / 0;
+
+         Map<String, Object> student = new HashMap<>();
+
+|  Bash     查看添加服务接口的提交文件
+
+commit 7f91cbbf1ba610aa3809b6a362c7077c8589adff
+Author: leebean123 <lib@aixahc.com>
+Date:   Thu Feb 5 13:06:43 2026 +0800
+
+    add service interface
+
+src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java
+
+|  Bash     查看添加服务接口提交的具体差异
+
+commit 7f91cbbf1ba610aa3809b6a362c7077c8589adff
+Author: leebean123 <lib@aixahc.com>
+Date:   Thu Feb 5 13:06:43 2026 +0800
+
+    add service interface
+
+diff --git a/src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java b/src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java
+index da832e5..e80552c 100644
+--- a/src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java
++++ b/src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java
+@@ -7,6 +7,10 @@ import org.springframework.stereotype.Service;
+ public class StudentGetInfoImpl implements StudentGetInfo {
+     @Override
+     public String getInfo(Long id) {
++
++        if (id == 1) {
++            return "是这条件分支测试";
++        }
+         return "name:张三,age:20";
+     }
+ }
+
+|  Bash     查看另一个添加服务接口提交的具体差异
+
+commit 28c17deb469bb5085e546adfb1e6bcf29646b15f
+Author: leebean123 <lib@aixahc.com>
+Date:   Thu Feb 5 13:06:01 2026 +0800
+
+    add service interface
+
+diff --git a/src/main/java/com/example/provider/controller/StudentControllerDemo.java b/src/main/java/com/example/provider/controller/StudentControllerDemo.java
+index 0dd6989..e144f96 100644
+--- a/src/main/java/com/example/provider/controller/StudentControllerDemo.java
++++ b/src/main/java/com/example/provider/controller/StudentControllerDemo.java
+@@ -1,6 +1,8 @@
+ package com.example.provider.controller;
+
+ import com.alibaba.fastjson2.JSON;
++import com.example.provider.service.StudentGetInfo;
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.web.bind.annotation.*;
+
+ import javax.servlet.http.HttpServletRequest;
+@@ -12,6 +14,9 @@ import java.util.Map;
+ //@RequestMapping("/provider")
+ public class StudentControllerDemo {
+
++    @Autowired
++    private StudentGetInfo studentGetInfo;
++
+     @GetMapping("/student/get/{id}")
+     public Map<String, Object> getStudent(@PathVariable Long id,
+                                           @RequestHeader Map<String, String> headers) {
+@@ -24,6 +29,7 @@ public class StudentControllerDemo {
+         }else if (id == 2) {
+             return null;
+         }
++        String info = studentGetInfo.getInfo(id);
+
+         int number = 10 / 0;
+
+@@ -31,6 +37,7 @@ public class StudentControllerDemo {
+         student.put("id", id);
+         student.put("name", "张三");
+         student.put("age", 20);
++        student.put("info", info);
+         return student;
+     }
+
+diff --git a/src/main/java/com/example/provider/service/StudentGetInfo.java b/src/main/java/com/example/provider/service/StudentGetInfo.java
+new file mode 100644
+index 0000000..3e6d209
+--- /dev/null
++++ b/src/main/java/com/example/provider/service/StudentGetInfo.java
+@@ -0,0 +1,6 @@
++package com.example.provider.service;
++
++public interface StudentGetInfo {
++
++    public String getInfo(Long id);
++}
+diff --git a/src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java b/src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java
+new file mode 100644
+index 0000000..da832e5
+--- /dev/null
++++ b/src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java
+@@ -0,0 +1,12 @@
++package com.example.provider.service.impl;
++
++import com.example.provider.service.StudentGetInfo;
++import org.springframework.stereotype.Service;
++
++@Service
++public class StudentGetInfoImpl implements StudentGetInfo {
++    @Override
++    public String getInfo(Long id) {
++        return "name:张三,age:20";
++    }
++}
+
+|  Glob     src/test
+|  Glob     {"pattern":"pom.xml","path":"/usr/local/code/dubbo/springcloud-provider"}
+|  Read     pom.xml
+
+## 代码审查报告
+
+### 变更分析
+基于 `structure.json` 和 git 历史，识别到以下关键变更：
+
+#### 1. 新增/修改的 if 分支
+**位置**: `src/main/java/com/example/provider/controller/StudentControllerDemo.java:27-31`
+```java
+if (id == 1) {
+    throw new RuntimeException("Student not found");
+} else if (id == 2) {
+    return null;
+}
+```
+- **条件表达式**: `id == 1` 和 `id == 2`
+- **所在方法**: `getStudent(@PathVariable Long id, @RequestHeader Map<String, String> headers)`
+- **影响**: 新增异常抛出和 null 返回路径
+
+**位置**: `src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java:11-13`
+```java
+if (id == 1) {
+    return "是这条件分支测试";
+}
+```
+- **条件表达式**: `id == 1`
+- **所在方法**: `getInfo(Long id)`
+- **影响**: 新增业务逻辑分支
+
+#### 2. 新增的服务依赖
+- **接口**: `StudentGetInfo` (`src/main/java/com/example/provider/service/StudentGetInfo.java:5`)
+- **实现**: `StudentGetInfoImpl` (`src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java:9`)
+- **注入点**: `StudentControllerDemo.studentGetInfo` (field injection)
+
+### RESTful 接口影响分析
+
+#### 受影响的接口 (直接修改)
+1. **GET /student/get/{id}** - `StudentControllerDemo.getStudent()`
+   - **变更类型**: 逻辑修改 + 服务调用
+   - **文件位置**: `src/main/java/com/example/provider/controller/StudentControllerDemo.java:20`
+   - **变更内容**:
+     - 新增 if 分支处理 id=1,2
+     - 调用 `studentGetInfo.getInfo(id)` 服务
+     - 响应新增 `info` 字段
+
+#### 上游依赖接口 (服务变更影响)
+1. **StudentGetInfo.getInfo(Long id)**
+   - **变更类型**: 新增条件分支
+   - **文件位置**: `src/main/java/com/example/provider/service/impl/StudentGetInfoImpl.java:9`
+   - **上游调用者**: `StudentControllerDemo.getStudent()`
+
+#### 其他接口 (未变更但需验证)
+1. **POST /student/post/echo** - `handlePostRequest()`
+2. **PUT /student/put/echo** - `handlePutRequest()`
+3. **DELETE /student/delete/{id}** - `handleDeleteRequest()`
+
+### 必须测试的点
+
+#### 1. 控制器层测试
+- **边界条件测试**:
+  - `id = 1`: 验证抛出 `RuntimeException`，HTTP 状态码应为 500
+  - `id = 2`: 验证返回 `null` 的处理（可能引起序列化问题）
+  - `id = 3+`: 验证正常流程，响应包含 `info` 字段
+- **服务调用测试**:
+  - 验证 `studentGetInfo.getInfo(id)` 被正确调用
+  - 模拟服务异常场景
+
+#### 2. 服务层测试
+- **分支覆盖**:
+  - `id = 1`: 验证返回 "是这条件分支测试"
+  - `id = 其他值`: 验证返回 "name:张三,age:20"
+
+#### 3. 集成测试
+- **端到端流程**: `GET /student/get/{id}` → 控制器 → 服务层
+- **异常处理**: 验证全局异常处理器是否处理 `RuntimeException`
+- **响应格式**: 验证 JSON 结构包含 `{id, name, age, info}`
+
+### 风险提示
+
+#### 高风险
+1. **空值返回**: `id = 2` 时返回 `null`，可能导致:
+   - Spring MVC 序列化异常
+   - 客户端收到空响应体
+   - **建议**: 返回空 Map 或明确的错误响应
+
+2. **异常处理**: 抛出 `RuntimeException` 未定义 HTTP 状态码
+   - **建议**: 使用 `@ResponseStatus` 或 `ResponseEntity` 明确状态
+
+3. **服务依赖**: 控制器强依赖 `StudentGetInfo`，未处理服务不可用
+   - **建议**: 添加降级逻辑或空值检查
+
+#### 中风险
+1. **魔法值**: 硬编码 `id == 1`, `id == 2`
+   - **建议**: 定义为常量
+
+2. **代码重复**: 两个控制器 (`StudentController` 和 `StudentControllerDemo`) 有相同端点
+   - **建议**: 明确分工或合并
+
+### 测试构造指南
+
+#### 1. 控制器测试参数
+- **正常案例**: `id = 3` (或其他非1,2的值)
+  - 预期: HTTP 200，响应包含 `info` 字段
+- **异常案例1**: `id = 1`
+  - 预期: HTTP 500，异常信息 "Student not found"
+- **异常案例2**: `id = 2`
+  - 预期: HTTP 200，但响应体可能为空
+
+#### 2. 服务层测试参数
+- **分支1**: `id = 1`
+  - 预期: 返回 "是这条件分支测试"
+- **分支2**: `id = 其他值`
+  - 预期: 返回 "name:张三,age:20"
+
+#### 3. 依赖模拟
+- **服务层**: Mock `StudentGetInfo.getInfo()` 返回不同值
+- **异常场景**: Mock 服务抛出异常
+- **Header验证**: 测试 `mesh_origin` 和 `Mesh_Provider_Dataid` 处理
+
+### 总结
+本次变更主要影响 `GET /student/get/{id}` 接口，新增了条件分支和服务调用。需要重点关注：
+1. 异常处理和空值返回问题
+2. 服务层分支覆盖测试
+3. 接口响应格式一致性
+
+**最紧急事项**: 修复 `id = 2` 时返回 `null` 的问题，避免生产环境序列化错误。
