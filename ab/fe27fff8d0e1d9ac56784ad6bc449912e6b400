@@ -1,0 +1,23 @@
+src/main/java/com/example/provider/HelloWorld.java
+  4bd67ff34a32d5c7 1-4,6-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "abfe27fff8d0e1d9ac56784ad6bc449912e6b400",
+  "prompts": {
+    "4bd67ff34a32d5c7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "777d184a-5f7e-4f04-8a39-c1b639711f38",
+        "model": "deepseek-reasoner"
+      },
+      "human_author": "leebean123",
+      "messages": [],
+      "total_additions": 18,
+      "total_deletions": 0,
+      "accepted_lines": 17,
+      "overriden_lines": 1
+    }
+  }
+}
