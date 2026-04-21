@@ -87,9 +87,7 @@ public class IpUtil {
      * @return 是否为内网 IP
      */
     public static boolean isInternalIp(String ip) {
-        if (ip == null || ip.isEmpty()) {
-            return false;
-        }
+
 
         // IPv6 本地回环地址
         if (LOCALHOST_IPV6.equals(ip)) {
