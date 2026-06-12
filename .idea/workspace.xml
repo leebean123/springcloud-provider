@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7aac76f-b111-476d-9cbb-9b9fc78f69ee" name="Changes" comment="测试代码">
-      <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/demo/AllProblemCodeTest$UserInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/demo/AllProblemCodeTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="f7aac76f-b111-476d-9cbb-9b9fc78f69ee" name="Changes" comment="测试代码，删除注释" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,7 +89,7 @@
       <workItem from="1778227209155" duration="1782000" />
       <workItem from="1779684476328" duration="336000" />
       <workItem from="1780099952053" duration="339000" />
-      <workItem from="1780492878370" duration="18235000" />
+      <workItem from="1780492878370" duration="18529000" />
     </task>
     <task id="LOCAL-00001" summary="新提交生成代码">
       <option name="closed" value="true" />
@@ -128,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781257513813</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="测试代码，删除注释">
+      <option name="closed" value="true" />
+      <created>1781257903205</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1781257903205</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +151,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新提交生成代码" />
     <MESSAGE value="测试代码" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试代码" />
+    <MESSAGE value="测试代码，删除注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试代码，删除注释" />
   </component>
 </project>
