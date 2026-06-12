@@ -1,0 +1,129 @@
+.opencode/skills/open-code-review/SKILL.md
+  s_22b66d9ea9d355::t_7f5e9297543ef7 1-39
+.opencode/agent/java-cr-export/SKILL.md
+  s_7174c0319244df::t_9b64dfbdf44a2d 4-7
+.opencode/commands/cr-general.md
+  s_eddc11c4796f2e::t_f280a4c9aad2ef 1,6
+  s_eddc11c4796f2e::t_c64021ac199ad9 2,8
+  s_eddc11c4796f2e::t_6be13ec0597971 4
+  s_eddc11c4796f2e::t_5e37bbdbc2cb5a 3,5
+src/main/java/com/example/provider/utill/StringConvertUtil.java
+  4f08d70da08fa47c 1-461
+.idea/workspace.xml
+  s_46b60ba46917b9::t_f88c82ff3d1317 7,64
+  c93e43b327151a59 1-6,65-80,84-113,127-142,150,176-190,196-197
+  4ebe76c3486703af 81-83,114-126,143-144,151-158,191-193
+skill-deps-20260610200144.log
+  s_eaefa55f9a3716::t_0cf69e148e581a 1-18
+.opencode/agent/ocr-cr-expert/SKILL.md
+  s_22b66d9ea9d355::t_58cfde1d3c49ed 1-46
+src/test/java/com/example/mambabli/Provider/HelloWorldTest.java
+  3482ad8c67665733 1-8
+skill-deps-20260610195322.log
+  s_e3f96f45971c88::t_d60ab0148ff4d1 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "4abb2f796ea5e0875b16eb8644ecc273b8baddff",
+  "prompts": {
+    "3482ad8c67665733": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_1fef03098ffe0qdME4bFUM9GsI-736014cd-6ae3-4bb3-876b-c66e6a649f7f",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    },
+    "4ebe76c3486703af": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_1fef03098ffe0qdME4bFUM9GsI-8aabea7c-af61-4381-af66-d36f8ec6c982",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 29,
+      "overriden_lines": 0
+    },
+    "4f08d70da08fa47c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_2510870dbffeg07WZ24dQSbACB-1fd4aad6-3579-4c2f-b69d-7094113d0378",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 461,
+      "overriden_lines": 0
+    },
+    "c93e43b327151a59": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_2510870dbffeg07WZ24dQSbACB-f1c95171-cceb-4752-ae57-ce082cc93d10",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>",
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 67,
+      "overriden_lines": 0
+    }
+  },
+  "sessions": {
+    "s_22b66d9ea9d355": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1837597d-3b8e-4458-9d0b-da536829d104",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    },
+    "s_46b60ba46917b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_14ec860d8ffeUF7X5ipbyvMSDc",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    },
+    "s_7174c0319244df": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c883063a-b18d-4b63-a33f-ee28a1dc95b6",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    },
+    "s_e3f96f45971c88": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_14eabde74ffe42l9As9AoxLGad",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    },
+    "s_eaefa55f9a3716": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_14e973a20ffe6Q4tjph9b5d14J",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    },
+    "s_eddc11c4796f2e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b9c1c5be-1a87-4843-aabb-a01df3142400",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    }
+  }
+}
