@@ -62,3 +62,7 @@ description: |
 - 不要每次生成新 ID！
 - 即使用户没提“追踪”，也要加上 `[TRACE]` 行
 - UUID 必须符合标准格式（可使用在线生成器模拟）
+
+## 依赖追踪
+```bash                                                                                                                                                                                                   
+bash /usr/local/code/dubbo/demo/springcloud-provider/.opencode/skills/code-analyzer/skill-tracer.sh 
