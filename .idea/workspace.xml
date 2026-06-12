@@ -6,61 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f7aac76f-b111-476d-9cbb-9b9fc78f69ee" name="Changes" comment="测试代码">
       <change afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.opencode/agent/java-cr-export/SKILL.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.opencode/agent/ocr-cr-expert/SKILL.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.opencode/commands/cr-general.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.opencode/skills/open-code-review/SKILL.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.project" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.apt.core.prefs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.settings/org.eclipse.m2e.core.prefs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AGENTS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skill-deps-20260610195322.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skill-deps-20260610200144.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/skill-deps-20260610201051.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/utill/StringConvertUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/mambabli/Provider/HelloWorldTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/HelloWorld.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/controller/StudentControllerDemo.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/demo/AllProblemCodeTest$UserInfo.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/demo/AllProblemCodeTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/service/StudentGetInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/service/impl/StudentGetInfoImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/utill/GetMethodUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/utill/IpUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/utill/StringConvertUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/utill/StringUtilTool.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/provider/utill/TimeUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/mambabli/Provider/HelloWorldTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/mambabli/Provider/ProviderApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-01-api-inconsistency/StudentNewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-api-inconsistency/StudentNewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-02-null-propagation/StudentInfoCompositeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-propagation/StudentInfoCompositeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-03-orphaned-bean/RemoteStudentClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-orphaned-bean/RemoteStudentClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-04-package-issue/StudentControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-package-issue/StudentControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-05-exception-handling/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-exception-handling/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-06-header-naming/RequestHeaderUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-header-naming/RequestHeaderUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-07-duplicate-code/JsonHelperUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-duplicate-code/JsonHelperUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-08-typo-package/DataProcessorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-typo-package/DataProcessorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-09-resource-leak/StudentDataFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-resource-leak/StudentDataFileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-10-thread-safety/StudentVisitCounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-thread-safety/StudentVisitCounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-11-transaction-missing/StudentEnrollmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-transaction-missing/StudentEnrollmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-12-refactoring/SecurityBypassService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-refactoring/SecurityBypassService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-12-refactoring/StudentAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-refactoring/StudentAdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-13-config-mismatch/RemoteServiceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-config-mismatch/RemoteServiceConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-14-circular-dependency/CourseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-circular-dependency/CourseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-14-circular-dependency/EnrollmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-circular-dependency/EnrollmentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-15-dto-mapping/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-dto-mapping/StudentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-15-dto-mapping/StudentDtoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-dto-mapping/StudentDtoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-16-constant-duplication/StudentConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-constant-duplication/StudentConstants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-17-deprecated-api/DeprecatedApiUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-deprecated-api/DeprecatedApiUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-17-deprecated-api/StudentDataConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-deprecated-api/StudentDataConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-18-qualifier-missing/StudentGetInfoCacheImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-qualifier-missing/StudentGetInfoCacheImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-19-interceptor-bypass/AuthInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-interceptor-bypass/AuthInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-19-interceptor-bypass/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-interceptor-bypass/WebMvcConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview/scenario-20-async-self-invoke/AsyncLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/provider/student-mode-service/mode-async-self-invoke/AsyncLogService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,7 +94,7 @@
       <workItem from="1778227209155" duration="1782000" />
       <workItem from="1779684476328" duration="336000" />
       <workItem from="1780099952053" duration="339000" />
-      <workItem from="1780492878370" duration="17995000" />
+      <workItem from="1780492878370" duration="18235000" />
     </task>
     <task id="LOCAL-00001" summary="新提交生成代码">
       <option name="closed" value="true" />
@@ -172,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781252458301</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="测试代码">
+      <option name="closed" value="true" />
+      <created>1781257513813</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1781257513813</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
