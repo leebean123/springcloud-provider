@@ -1,0 +1,27 @@
+src/main/java/com/example/provider/student-mode-service/mode-exception-handling/GlobalExceptionHandler.java
+  s_09697d01c2eb6f::t_eda68cebfe4571 16
+src/main/java/com/example/provider/student-mode-service/mode-refactoring/SecurityBypassService.java
+  s_09697d01c2eb6f::t_4b976015c73b57 21
+src/main/java/com/example/provider/student-mode-service/mode-dto-mapping/StudentDto.java
+  s_09697d01c2eb6f::t_8d41442cecf461 10
+src/main/java/com/example/provider/student-mode-service/mode-refactoring/StudentAdminController.java
+  s_09697d01c2eb6f::t_6332bae6b3c148 33
+src/main/java/com/example/provider/student-mode-service/mode-interceptor-bypass/AuthInterceptor.java
+  s_09697d01c2eb6f::t_7804282304dd5e 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9876b66b8553eae382d51f077c9c1e9a7acae0f8",
+  "prompts": {},
+  "sessions": {
+    "s_09697d01c2eb6f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ef934f27-c6c1-46cc-9664-414ca1712da2",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    }
+  }
+}
