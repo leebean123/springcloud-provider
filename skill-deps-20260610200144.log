@@ -1,0 +1,18 @@
+===== Skill 依赖追踪 =====
+命令: 
+时间: 2026年 6月10日 星期三 20时01分44秒 CST
+目录: /usr/local/code/dubbo/demo/springcloud-provider
+
+命令路径: 
+cannot open `' (No such file or directory)
+
+──── 动态库依赖 ────
+
+──── OCR 配置文件 ────
+  /Users/libin/.opencodereview/config.json
+
+──── 运行时文件访问 ────
+⚠  dtruss 需要 sudo，跳过自动追踪
+   如需手动: sudo dtruss -f  2>&1 | grep stat64
+
+===== 追踪完成 =====
