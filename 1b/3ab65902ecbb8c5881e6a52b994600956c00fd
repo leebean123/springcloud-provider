@@ -1,0 +1,61 @@
+.opencode/skills/open-code-review/SKILL.md
+  s_541db3ecb06c41::t_92092ac4b296be 153-154
+  s_8a281cde2fe823::t_643b466926fe0d 3,31,33-65,67-81,94,96,100-104,115-116,123,125,127-131,134,136,152,165-167,169-171,176
+  s_8a281cde2fe823::t_75463381f5b3dd 66
+  s_8a281cde2fe823::t_5353af7e5a38ee 22
+  s_8a281cde2fe823::t_56ade25c53394f 82-92
+  s_541db3ecb06c41::t_f3b5be52402d6d 98-99
+  s_541db3ecb06c41::t_ee3bf1206751a9 119
+  s_8a281cde2fe823::t_bdf8ad5c389f70 105-114,121-122,145-151,161-164
+  s_541db3ecb06c41::t_cf97dfba7b4363 137-138
+  s_8a281cde2fe823::t_79e9e843fc0aab 28
+  s_8a281cde2fe823::t_37e93366d439b7 93,95,97,117-118,120,124,126,132-133,135,139-144,155-160,168,172-175,177-180
+  s_8a281cde2fe823::t_630f82e0cb0eec 16
+.opencode/agent/ocr-cr-expert/SKILL.md
+  s_8a281cde2fe823::t_df706f75c627b9 115-125,133-137
+  s_8a281cde2fe823::t_3a9327e0c56844 11,35,37,39-69,74-76,95-96,98-107,143-152,156-157
+  s_8a281cde2fe823::t_0a4fe235e95e77 108
+  s_8a281cde2fe823::t_6521ce3f55b408 70-73
+  s_8a281cde2fe823::t_3a81ec5183a17c 77-94
+  s_8a281cde2fe823::t_7180f3482274d9 22,27,32
+  s_8a281cde2fe823::t_0f06e073753a86 158-159,169-170
+  s_8a281cde2fe823::t_476a743ae3b0f0 128
+  s_8a281cde2fe823::t_268fa6db2ab7a7 160-168
+  s_8a281cde2fe823::t_a9b513a3fc1d4c 109
+  s_8a281cde2fe823::t_9e55116f11e6ff 97,110-114,126,129-132,138-142
+  s_8a281cde2fe823::t_e46f01b6a99c01 127
+.opencode/commands/cr-general.md
+  s_eddc11c4796f2e::t_acbb7e7159089a 2,7-27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "1b3ab65902ecbb8c5881e6a52b994600956c00fd",
+  "prompts": {},
+  "sessions": {
+    "s_541db3ecb06c41": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a7a7f78e-4207-4e59-9987-dc116460ef9f",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    },
+    "s_8a281cde2fe823": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "12250a6b-1999-4cee-8af2-5198f91f1af8",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    },
+    "s_eddc11c4796f2e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b9c1c5be-1a87-4843-aabb-a01df3142400",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    }
+  }
+}
