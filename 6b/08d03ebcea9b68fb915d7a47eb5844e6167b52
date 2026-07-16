@@ -1,0 +1,23 @@
+.opencode/skills/open-code-review/SKILL.md
+  s_1c7ebf6ea989f8::t_9a6a31ab1e6407 161,163,166,170
+  s_1c7ebf6ea989f8::t_5b602d5020786a 12-14,18,21-23,25
+  s_1c7ebf6ea989f8::t_254369a45e7fad 78-83
+  s_1c7ebf6ea989f8::t_52c102ab68361b 127,132
+  s_1c7ebf6ea989f8::t_0fb27ccd5a8c65 171
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "6b08d03ebcea9b68fb915d7a47eb5844e6167b52",
+  "prompts": {},
+  "sessions": {
+    "s_1c7ebf6ea989f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cb6b81b5-353f-4289-9e4e-bd1e808f581d",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    }
+  }
+}
