@@ -1,0 +1,19 @@
+src/main/java/com/example/provider/crosstest/_GROUND_TRUTH.md
+  s_ef11f85c5cf683::t_91567b99262499 1-92
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "4b0757a1c26ea335c0137ee2a80ef103b86a773b",
+  "prompts": {},
+  "sessions": {
+    "s_ef11f85c5cf683": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "310ecb11-355a-4943-8464-ca06e67161cd",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    }
+  }
+}
