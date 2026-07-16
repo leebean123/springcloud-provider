@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "path": "**/*.java",
+      "rule": "【空指针风险】检查所有可能产生 NPE 的场景：方法参数未做 null 检查、调用链中未判空、自动拆箱可能 NPE、数组/集合访问前未判空、级联调用未判空"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "【流资源关闭】流/Connection/Statement/ResultSet 使用后必须在 finally 中关闭（关闭前判空）或用 try-with-resources 自动处理。降低资源泄漏、文件句柄耗尽风险。重点检查 FileInputStream、BufferedReader、Connection、PreparedStatement 等"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "【线程安全】检查多线程环境下共享变量的线程安全问题：未使用锁或原子类保护共享变量、HashMap 并发扩容导致死循环、SimpleDateFormat 线程不安全、未使用线程安全的集合类、没有正确处理竞态条件"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "【集合未判空】使用 Collection/Map 前必须先判空（null 检查），否则 foreach 遍历或调用 size()/isEmpty() 时会抛 NPE"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "【SQL 注入风险】检查 MyBatis XML 或注解 SQL 中是否使用 ${} 拼接参数，应使用 #{} 参数绑定方式。like 查询、in 查询、order by 动态排序等场景要特别注意防止注入"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "【异常捕获不当】禁止捕获通用的 Exception/RuntimeException/Throwable，应捕获具体异常类型。禁止在循环内捕获异常。不要吞没异常（catch 块为空或只打 log 不处理）"
+    }
+  ]
+}

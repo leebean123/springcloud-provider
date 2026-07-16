@@ -1,0 +1,41 @@
+{
+  "rules": [
+    {
+      "path": "**/*.java",
+      "rule": "通用检查：空指针风险（NPE）、未关闭资源、线程安全问题、集合未判空、异常捕获不当"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "命名规范检查：类名帕斯卡命名、方法名驼峰命名、常量全大写、Boolean 变量不用 is 前缀"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "检查是否使用了已废弃的 API、是否存在硬编码魔法值、是否缺少必要的 @Override 注解"
+    },
+    {
+      "path": "**/controller/**/*.java",
+      "rule": "Controller 层检查：参数校验（@Valid/@Validated）、统一异常处理、权限注解（@PreAuthorize）、返回值统一封装"
+    },
+    {
+      "path": "**/service/**/*.java",
+      "rule": "Service 层检查：事务注解（@Transactional）声明位置与传播行为、业务逻辑边界、异常转换、幂等性处理"
+    },
+    {
+      "path": "**/mapper/**/*.java",
+      "rule": "Mapper 层检查：MyBatis 参数映射（@Param）、SQL 注入风险、结果映射配置、DAO 层方法命名"
+    },
+    {
+      "path": "**/model/**/*.java",
+      "rule": "实体类检查：implements Serializable、equals/hashCode 正确性、字段类型与长度是否合理"
+    },
+    {
+      "path": "**/config/**/*.java",
+      "rule": "配置类检查：@Configuration/@Bean 使用正确性、Bean 生命周期、循环依赖风险"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "日志检查：使用参数占位符避免字符串拼接、避免打印敏感信息、正确使用日志级别"
+    }
+  ],
+  "exclude": ["**/*.{xml,properties,yml,yaml,json,md,txt,sh,py,js,ts,jsx,tsx,css,scss,less,html,ftl,vm,sql,gradle,kt,kts,groovy,svg,png,jpg,jpeg,gif,ico,woff,woff2,eot,ttf,pdf,zip,tar,gz,tgz,lock}"]
+}

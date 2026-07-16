@@ -1,0 +1,32 @@
+{
+  "rules": [
+    {
+      "path": "**/controller/**/*.java",
+      "rule": "【Controller 层】参数校验必须使用 @Valid/@Validated；统一异常处理（@ControllerAdvice）；权限注解 @PreAuthorize；返回值统一封装（R/Result 等）；避免在 Controller 中写业务逻辑"
+    },
+    {
+      "path": "**/service/**/*.java",
+      "rule": "【Service 层】@Transactional 声明在方法上而非接口上，注意事务传播行为（REQUIRED/REQUIRES_NEW/NESTED）的正确选择；业务异常需转换为自定义异常抛出以触发回滚；跨方法调用事务失效问题"
+    },
+    {
+      "path": "**/mapper/**/*.java",
+      "rule": "【Mapper 层】MyBatis 多参数必须使用 @Param 注解；避免使用 ${} 拼接（SQL 注入）；结果映射 @Results 字段对齐；DAO 方法命名遵循规范（insert/delete/update/select 前缀）"
+    },
+    {
+      "path": "**/model/**/*.java",
+      "rule": "【实体类】实现 Serializable 并提供 serialVersionUID；equals/hashCode 正确实现（使用业务主键）；字段类型与数据库字段对齐；BigDecimal 精度设置"
+    },
+    {
+      "path": "**/config/**/*.java",
+      "rule": "【配置类】@Configuration/@Bean 使用正确；Bean 生命周期和初始化顺序；循环依赖风险；@ConditionalOnMissingBean 避免 Bean 覆盖"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "【事务边界】@Transactional 不能作用于 private 方法；事务方法内部 try-catch 会吞异常导致事务不回滚；事务方法不能在本类中直接调用（AOP 代理失效）；注意事务中超时时间设置"
+    },
+    {
+      "path": "**/*.java",
+      "rule": "【幂等性】幂等性校验（@Idempotent）；防重 Token 机制；数据库唯一索引；状态机幂等处理；消息消费的去重"
+    }
+  ]
+}
