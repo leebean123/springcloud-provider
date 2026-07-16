@@ -1,0 +1,19 @@
+.opencode/skills/open-code-review/SKILL.md
+  s_1c7ebf6ea989f8::t_291445f9ffc0f9 1-178
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "a8f7a7a91258ffc656e2c3b90c1b5ecbff0001db",
+  "prompts": {},
+  "sessions": {
+    "s_1c7ebf6ea989f8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cb6b81b5-353f-4289-9e4e-bd1e808f581d",
+        "model": "unknown"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    }
+  }
+}
