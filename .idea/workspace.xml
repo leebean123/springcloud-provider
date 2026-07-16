@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7aac76f-b111-476d-9cbb-9b9fc78f69ee" name="Changes" comment="测试代码，删除注释">
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.opencode/agent/ocr-cr-expert/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.opencode/agent/ocr-cr-expert/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.opencode/commands/cr-general.md" beforeDir="false" afterPath="$PROJECT_DIR$/.opencode/commands/cr-general.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.opencode/skills/code-analyzer/SKILL.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.opencode/skills/code-analyzer/skill-tracer.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.opencode/skills/open-code-review/SKILL.md" beforeDir="false" afterPath="$PROJECT_DIR$/.opencode/skills/open-code-review/SKILL.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +23,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -42,39 +37,26 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature__test&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/usr/local/code/dubbo/demo/springcloud-provider/src/main/java/com/example/provider/mockCodeReview&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "<unknown>",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/usr/local/code/dubbo/demo/springcloud-provider/src/main/java/com/example/provider/mockCodeReview",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/com/example/provider/mockCodeReview" />
       <recent name="$PROJECT_DIR$" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="spring-cloud-nacos-provider" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="spring-cloud-nacos-provider" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -102,7 +84,10 @@
       <workItem from="1781663525144" duration="8725000" />
       <workItem from="1782212460121" duration="112000" />
       <workItem from="1782212576110" duration="135000" />
-      <workItem from="1782212802680" duration="6126000" />
+      <workItem from="1782212802680" duration="16790000" />
+      <workItem from="1782977520420" duration="1059000" />
+      <workItem from="1783997307363" duration="1005000" />
+      <workItem from="1784188898542" duration="271000" />
     </task>
     <task id="LOCAL-00001" summary="新提交生成代码">
       <option name="closed" value="true" />
@@ -152,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781258305108</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="测试代码，删除注释">
+      <option name="closed" value="true" />
+      <created>1782385134423</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1782385134423</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

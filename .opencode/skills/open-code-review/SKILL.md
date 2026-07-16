@@ -9,24 +9,20 @@ description: 阿里巴巴开源的 AI 代码审查工具，通过 ocr CLI 对 Gi
 
 ## 使用方式
 
-### 审查当前分支与主分支的差异
+### 审查指定分支间的差异
+
+从用户消息中解析 `from=` 和 `to=` 参数，然后执行：
 
 ```bash
 cd <项目目录>
-ocr review --from main --to <当前分支名> --format json --audience agent
+ocr review --from <源分支> --to <目标分支> --format json --audience agent
 ```
 
-### 审查工作区变更（未暂存/未提交）
+**参数说明**：
+- `from=xxx`：源分支（基准分支），用户未指定时默认 `main`
+- `to=xxx`：目标分支（待审查分支），用户未指定时默认当前分支（通过 `git rev-parse --abbrev-ref HEAD` 获取）
 
-```bash
-ocr review --format json --audience agent
-```
-
-### 审查指定提交
-
-```bash
-ocr review --commit <commit-hash> --format json --audience agent
-```
+例如用户输入 `from=develop to=my-feature` → `--from develop --to my-feature`
 
 > **说明**：`--format json` 输出结构化结果便于解析，`--audience agent` 隐藏进度条只输出最终结果。
 
@@ -79,7 +75,12 @@ ocr review --commit <commit-hash> --format json --audience agent
 
 > 若 `【】` 内的标签不在上表中，按严重程度合理推断：安全/正确性相关→P0，异常/数据相关→P1，风格/规范相关→P2。
 
-### 3.1 行号修正（重要）
+### 3.1 输出过滤规则（重要）
+
+**只输出 P0（严重）级别的问题**，P1 和 P2 级别的直接丢弃，不在报告中展示。
+即使存在 P1/P2 问题，也一律忽略，仅保留 P0。
+
+### 3.2 行号修正（重要）
 
 当 `start_line == 0` 且 `end_line == 0` 时，说明 OCR 未能定位到准确行号。**禁止直接输出 0-0**，必须按以下步骤自行修正：
 
@@ -123,12 +124,12 @@ ocr review --commit <commit-hash> --format json --audience agent
 
 ### 5. 整体展示结构
 
-按 **文件分组 → 内部按 P0/P1/P2 排序**：
+按 **文件分组** 展示，**只输出 P0 问题**：
 
 ```
 ## OCR 代码审查报告
 
-共审查 N 个文件，发现 M 个问题（P0: X, P1: Y, P2: Z）
+共审查 N 个文件，发现 P0 问题 X 个（P1/P2 已过滤）
 
 ---
 
@@ -150,19 +151,6 @@ ocr review --commit <commit-hash> --format json --audience agent
       }
   ```
 
-**问题 2** | **级别**: P1（重要） | **行号**: L13-L14
-- **文件**: src/main/java/.../XxxService.java
-- **问题描述**: 抛出通用的 RuntimeException
-- **问题代码**:
-  ```java
-  throw new RuntimeException();
-  ```
-- **修改建议**: 使用更具体的业务异常类
-- **建议修复代码**:
-  ```java
-  throw new BusinessException("无效的用户ID：" + id);
-  ```
-
 ---
 
 ### 📁 文件: src/main/java/.../YyyService.java
@@ -170,14 +158,16 @@ ocr review --commit <commit-hash> --format json --audience agent
 ...
 ```
 
-### 6. 无问题时的输出
+### 6. 无 P0 问题时的输出
 
-当 `comments` 数组为空时，输出：
+当没有任何 P0 问题时，输出：
 
 ```
-审查结果：代码质量良好，未发现问题。
+审查结果：未发现 P0 级别问题。
 共审查 N 个文件，耗时 Xs。
 ```
+
+> 注意：即使存在 P1/P2 问题，只要没有 P0 问题，就按上述输出。P1/P2 已被过滤不展示。
 
 ## 配置
 
