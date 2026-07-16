@@ -1,0 +1,51 @@
+src/main/java/com/example/provider/crosstest/level5_indirect/controller/OrderCreateController.java
+  s_ef11f85c5cf683::t_113307a29f2d0d 1-26
+src/main/java/com/example/provider/crosstest/level2_classlevel/EqualsNoHashCode.java
+  s_ef11f85c5cf683::t_5313c56cb05a91 1-29
+src/main/java/com/example/provider/crosstest/level5_indirect/service/PaymentService.java
+  s_ef11f85c5cf683::t_dad8d24c2cd0f8 1-37
+src/main/java/com/example/provider/crosstest/level3_crossfile/controller/UserController.java
+  s_ef11f85c5cf683::t_7cb2b3203f40de 1-28
+src/main/java/com/example/provider/crosstest/level2_classlevel/ResourceLeakAcross.java
+  s_ef11f85c5cf683::t_7e940d097a09fc 1-32
+src/main/java/com/example/provider/crosstest/level2_classlevel/DclSingleton.java
+  s_ef11f85c5cf683::t_edf919cd9652dc 1-29
+src/main/java/com/example/provider/crosstest/level2_classlevel/MemberThreadSafe.java
+  s_ef11f85c5cf683::t_c86f9a08433be8 1-23
+src/main/java/com/example/provider/crosstest/level6_architecture/config/CircularDependencyConfig.java
+  s_ef11f85c5cf683::t_8df5d9f9e023d8 1-41
+src/main/java/com/example/provider/crosstest/level3_crossfile/service/UserService.java
+  s_ef11f85c5cf683::t_2340995ccafcd3 1-24
+src/main/java/com/example/provider/crosstest/level5_indirect/service/OrderService.java
+  s_ef11f85c5cf683::t_5d4ca42ae0190c 1-28
+src/main/java/com/example/provider/crosstest/_GROUND_TRUTH.md
+  s_ef11f85c5cf683::t_340ae3753041b3 1-66
+src/main/java/com/example/provider/crosstest/level1_samefile/OrderProcessor.java
+  s_ef11f85c5cf683::t_a9f691e473da5c 1-41
+src/main/java/com/example/provider/crosstest/level5_indirect/dao/AccountDao.java
+  s_ef11f85c5cf683::t_64154c5eea9207 1-26
+src/main/java/com/example/provider/crosstest/level6_architecture/controller/LayerViolationController.java
+  s_ef11f85c5cf683::t_36b3988aeea64e 1-35
+src/main/java/com/example/provider/crosstest/level4_contract/controller/InventoryController.java
+  s_ef11f85c5cf683::t_2ac7d105caa5fa 1-36
+src/main/java/com/example/provider/crosstest/level6_architecture/service/NoTransactionService.java
+  s_ef11f85c5cf683::t_5c56d710d18ade 1-34
+src/main/java/com/example/provider/crosstest/level4_contract/service/InventoryService.java
+  s_ef11f85c5cf683::t_e4fac25fc16726 1-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "f3751575dc13b47a6890658eceafacf8c61c24db",
+  "prompts": {},
+  "sessions": {
+    "s_ef11f85c5cf683": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "310ecb11-355a-4943-8464-ca06e67161cd",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "leebean123 <lib@aixahc.com>"
+    }
+  }
+}
